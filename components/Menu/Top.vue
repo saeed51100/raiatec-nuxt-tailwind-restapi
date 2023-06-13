@@ -2,7 +2,7 @@
 <template>
   <nav class="bg-gray-900 text-white py-5 border-b border-gray-700">
     <div
-      class="container flex flex-col sm:flex-row justify-center gap-3 sm:gap-0 sm:justify-between items-center"
+        class="container flex flex-col sm:flex-row justify-center gap-3 sm:gap-0 sm:justify-between items-center"
     >
       <NuxtLink to="/" class="text-2xl font-medium">Elon's Blog</NuxtLink>
       <ul class="nav">
@@ -15,8 +15,6 @@
       </ul>
     </div>
   </nav>
-
-
 
 
   <header class="p-1 bg-light sticky-top shadow">
@@ -61,16 +59,13 @@
   </header>
 
 
-
-
-
-
 </template>
 
 <style>
 ul.nav {
   @apply flex gap-5 items-center justify-end;
 }
+
 ul.nav > li > a {
   @apply text-gray-300 hover:text-gray-50;
 }
