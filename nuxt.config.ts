@@ -13,6 +13,7 @@ export default defineNuxtConfig({
             },
             bodyAttrs: {
                 // id: 'my-body'
+                dir:'rtl',
                 class: 'h-full'
             },
         },
