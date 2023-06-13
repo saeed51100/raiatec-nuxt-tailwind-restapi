@@ -22,4 +22,12 @@ export default defineNuxtConfig({
             wpUri: process.env.WP_URI,
         },
     },
+
+    css: ['~/assets/css/main.css'],
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {},
+        },
+    },
 });
