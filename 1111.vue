@@ -39,7 +39,7 @@
                            leave-from="translate-x-0"
                            leave-to="translate-x-full"
           >
-            <DialogPanel class="relative ml-16 flex w-full max-w-xs flex-1">
+            <DialogPanel class="relative ml-0 flex w-full max-w-xs flex-1">
               <TransitionChild as="template" enter="ease-in-out duration-300" enter-from="opacity-0"
                                enter-to="opacity-100" leave="ease-in-out duration-300" leave-from="opacity-100"
                                leave-to="opacity-0">
