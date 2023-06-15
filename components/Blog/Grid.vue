@@ -8,53 +8,43 @@ defineProps<{
 </script>
 
 <template>
-  <div class="bg-white grid shadow-xl group overflow-hidden rounded">
+  <div class="max-w-lg mx-auto">
+    <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
 
-    <div
-        v-if="image !== ' '"
-        class="grid__image h-[180px] w-full relative overflow-hidden"
-    >
-      <img
-          :src="image"
-          :alt="title"
-          class="absolute object-cover w-full h-full group-hover:scale-110 duration-300"
-      />
-    </div>
+      <div v-if="image !== ' '">
+        <img :src="image" :alt="title" class="rounded-t-lg"/>
+      </div>
 
-    <div v-else>
-      <img src="~assets/svg/raiatecThumb.svg" :alt="title"/>
-    </div>
+      <div v-else>
+        <img src="~assets/svg/raiatecThumb.svg" :alt="title" class="rounded-t-lg"/>
+      </div>
 
-    <div class="grid__content p-5">
-      <h3 class="grid__content-title text-xl font-semibold mb-2">
-        {{ title }}
-      </h3>
-      <p
-          v-if="excerpt"
-          class="grid__content-excerpt mb-2 text-sm text-clip overflow-hidden ..."
-      >
-        {{ excerpt }}
-      </p>
-      <NuxtLink
-          v-if="slug"
-          class="blog__readmore border-b-2 border-primary-500 inline-flex items-center"
-          :to="`/${slug}`"
-      >Read more
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-4 h-4 ml-1 group-hover:ml-2 duration-200"
+      <div class="p-5">
+        <h3 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
+
+          <NuxtLink
+              v-if="slug"
+              :to="`/${slug}`"
+          >{{ title }}
+
+          </NuxtLink>
+
+
+        </h3>
+        <p
+            v-if="excerpt"
+            class="font-normal text-gray-700 mb-3"
         >
-          <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-          />
-        </svg>
-      </NuxtLink>
+          {{ excerpt }}
+        </p>
+        <NuxtLink
+            v-if="slug"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+            :to="`/${slug}`"
+        >ادامه مطلب
+
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>

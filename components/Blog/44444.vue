@@ -1,7 +1,6 @@
 <template>
   <!-- This is an example component -->
-  <div class="max-w-lg mx-auto">
-    <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
+
       <a href="#">
         <img class="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="">
       </a>
@@ -14,6 +13,5 @@
           Read more
         </a>
       </div>
-    </div>
-  </div>
+
 </template>
