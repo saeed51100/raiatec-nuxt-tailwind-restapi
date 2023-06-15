@@ -12,11 +12,11 @@ defineProps<{
     <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
 
       <div v-if="image !== ' '">
-        <img :src="image" :alt="title" class="rounded-t-lg"/>
+        <img :src="image" :alt="title" class="rounded"/>
       </div>
 
       <div v-else>
-        <img src="~assets/svg/raiatecThumb.svg" :alt="title" class="rounded-t-lg"/>
+        <img src="~assets/svg/raiatecThumb.svg" :alt="title" class="rounded"/>
       </div>
 
       <div class="p-5">
