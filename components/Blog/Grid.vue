@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="grid shadow-xl group overflow-hidden rounded">
+  <div class="bg-white grid shadow-xl group overflow-hidden rounded">
 
     <div
         v-if="image !== ' '"
