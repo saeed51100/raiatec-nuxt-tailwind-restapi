@@ -15,3 +15,32 @@
       </div>
 
 </template>
+
+
+// MyComponent.vue
+export default {
+computed: {
+excerpt() {
+const content = this.$store.state.content; // Replace with your content source
+const maxLength = 100; // Define the desired excerpt length
+
+if (content.length <= maxLength) {
+return content;
+} else {
+return content.substring(0, maxLength) + '...';
+}
+}
+}
+}
+In this example, content represents the full content you retrieved, and maxLength is the maximum length you want for the excerpt. The computed property checks if the content exceeds the maximum length and returns the truncated excerpt accordingly.
+
+Use the computed property in your template: Finally, you can display the excerpt in your template using the computed property you created.
+
+html
+Copy code
+<!-- MyComponent.vue -->
+<template>
+  <div>
+    <p>{{ excerpt }}</p>
+  </div>
+</template>
