@@ -37,13 +37,16 @@ defineProps<{
         >
           {{ excerpt }}
         </p>
-        <NuxtLink
-            v-if="slug"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
-            :to="`/${slug}`"
-        >ادامه مطلب
-
-        </NuxtLink>
+        <br>
+        <br>
+        <div class="relative">
+          <NuxtLink
+              v-if="slug"
+              class="absolute bottom-0 left-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+              :to="`/${slug}`"
+          >ادامه مطلب
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
