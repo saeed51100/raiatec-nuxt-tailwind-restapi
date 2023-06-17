@@ -33,7 +33,7 @@ defineProps<{
         </h3>
         <p
             v-if="excerpt"
-            class="font-normal text-gray-700 mb-3"
+            class="font-normal text-gray-700 mb-3 line-clamp-4 break-all"
         >
           {{ excerpt }}
         </p>
