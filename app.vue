@@ -146,7 +146,7 @@
       </a>
     </div>
 
-    <main class="py-10 lg:pl-72">
+    <main class="py-10 lg:pr-72">
       <div class="px-4 sm:px-6 lg:px-8">
         <!-- Your content -->
         <NuxtPage/>
