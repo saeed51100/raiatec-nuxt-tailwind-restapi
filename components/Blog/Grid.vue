@@ -16,7 +16,7 @@ defineProps<{
       </div>
 
       <div v-else>
-        <img src="~assets/svg/raiatecThumb.svg" :alt="title" class="rounded-t"/>
+        <img style="width: 100%;" src="~assets/svg/raiatecThumb.svg" :alt="title" class="rounded-t"/>
       </div>
 
       <div class="p-5">
