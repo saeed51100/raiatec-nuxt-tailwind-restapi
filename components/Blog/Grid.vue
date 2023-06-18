@@ -21,15 +21,7 @@ defineProps<{
 
       <div class="p-5">
         <h3 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
-
-          <NuxtLink
-              v-if="slug"
-              :to="`/${slug}`"
-          >{{ title }}
-
-          </NuxtLink>
-
-
+          <NuxtLink v-if="slug" :to="`/${slug}`" >{{ title }} </NuxtLink>
         </h3>
         <p
             v-if="excerpt"
