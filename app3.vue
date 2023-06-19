@@ -62,9 +62,9 @@
     </TransitionRoot>
 
     <!-- Static sidebar for desktop -->
-    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 ">
+    <div class="bg-orange-500	hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 ">
       <!-- Sidebar content -->
-      <p>dgdgdgdg</p>
+      <p>ssssssss</p>
     </div>
 
     <div class="lg:pr-72">
