@@ -108,9 +108,12 @@
         class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
 
       <!-- Raiatec logo -->
-      <div class="flex h-16 shrink-0 items-center">
-        <img class="h-8 w-auto" src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
-      </div>
+      <NuxtLink to="/" >
+        <div class="flex h-16 shrink-0 items-center">
+          <img class="h-8 w-auto" src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
+        </div>
+      </NuxtLink>
+
 
       <!--Modal button-->
       <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
@@ -136,9 +139,9 @@
       <!--      Nav links-->
       <div class="<!--hidden--> lg:ml-6 lg:flex lg:space-x-8">
         <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-        <a href="#"
+        <a href="/"
            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Home</a>
-        <a href="#"
+        <a href="/about"
            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">About me</a>
       </div>
 
