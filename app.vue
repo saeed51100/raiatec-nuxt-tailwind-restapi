@@ -52,8 +52,49 @@
               </TransitionChild>
               <!-- Sidebar component, swap this element with another sidebar if you like -->
               <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
-                <!-- Modal content -->
-                <p>dgdgdgdg</p>
+                <div class="flex h-16 shrink-0 items-center">
+                  <img class="h-8 w-auto" src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
+                </div>
+                <nav class="flex flex-1 flex-col">
+                  <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                    <li>
+                      <ul role="list" class="-mx-2 space-y-1">
+                        <li v-for="item in navigation" :key="item.name">
+                          <a :href="item.href"
+                             :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                            <component :is="item.icon"
+                                       :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0']"
+                                       aria-hidden="true"/>
+                            {{ item.name }}
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
+                      <ul role="list" class="-mx-2 mt-2 space-y-1">
+                        <li v-for="team in teams" :key="team.name">
+                          <a :href="team.href"
+                             :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                            <span
+                                :class="[team.current ? 'text-indigo-600 border-indigo-600' : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{
+                                team.initial
+                              }}</span>
+                            <span class="truncate">{{ team.name }}</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="mt-auto">
+                      <a href="#"
+                         class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
+                        <Cog6ToothIcon class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
+                                       aria-hidden="true"/>
+                        Settings
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
               </div>
             </DialogPanel>
           </TransitionChild>
@@ -61,22 +102,176 @@
       </Dialog>
     </TransitionRoot>
 
+    <Disclosure as="nav" class="bg-blue-300 shadow">
+      <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+        <div class="flex h-16 justify-between">
+          <div class="flex px-2 lg:px-0">
+            <div class="flex flex-shrink-0 items-center">
+              <img class="block h-8 w-auto lg:hidden"
+                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"/>
+              <img class="hidden h-8 w-auto lg:block"
+                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"/>
+            </div>
+            <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
+              <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
+              <a href="#"
+                 class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">Dashboard</a>
+              <a href="#"
+                 class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Team</a>
+              <a href="#"
+                 class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Projects</a>
+              <a href="#"
+                 class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Calendar</a>
+            </div>
+          </div>
+          <div class="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
+            <div class="w-full max-w-lg lg:max-w-xs">
+              <label for="search" class="sr-only">Search</label>
+              <div class="relative">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <MagnifyingGlassIcon class="h-5 w-5 text-gray-400" aria-hidden="true"/>
+                </div>
+                <input id="search" name="search"
+                       class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                       placeholder="Search" type="search"/>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center lg:hidden">
+            <!-- Mobile menu button -->
+            <DisclosureButton
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <span class="sr-only">Open main menu</span>
+              <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true"/>
+              <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true"/>
+            </DisclosureButton>
+          </div>
+          <div class="hidden lg:ml-4 lg:flex lg:items-center">
+            <button type="button"
+                    class="flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <span class="sr-only">View notifications</span>
+              <BellIcon class="h-6 w-6" aria-hidden="true"/>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    </Disclosure>
+
+
+    <!--My navbar-->
+    <div
+        class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+      <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
+        <span class="sr-only">Open sidebar</span>
+        <Bars3Icon class="h-6 w-6" aria-hidden="true"/>
+      </button>
+
+      <!-- Separator -->
+      <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true"/>
+
+      <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
+        <form class="relative flex flex-1" action="#" method="GET">
+          <label for="search-field" class="sr-only">Search</label>
+          <MagnifyingGlassIcon class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
+                               aria-hidden="true"/>
+          <input id="search-field"
+                 class="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+                 placeholder="Search..." type="search" name="search"/>
+        </form>
+        <div class="flex items-center gap-x-4 lg:gap-x-6">
+          <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+            <span class="sr-only">View notifications</span>
+            <BellIcon class="h-6 w-6" aria-hidden="true"/>
+          </button>
+
+          <!-- Separator -->
+          <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true"/>
+
+          <!-- Profile dropdown -->
+          <Menu as="div" class="relative">
+            <MenuButton class="-m-1.5 flex items-center p-1.5">
+              <span class="sr-only">Open user menu</span>
+              <img class="h-8 w-8 rounded-full bg-gray-50"
+                   src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
+              <span class="hidden lg:flex lg:items-center">
+                  <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">Tom Cook</span>
+                  <ChevronDownIcon class="ml-2 h-5 w-5 text-gray-400" aria-hidden="true"/>
+                </span>
+            </MenuButton>
+            <transition enter-active-class="transition ease-out duration-100"
+                        enter-from-class="transform opacity-0 scale-95"
+                        enter-to-class="transform opacity-100 scale-100"
+                        leave-active-class="transition ease-in duration-75"
+                        leave-from-class="transform opacity-100 scale-100"
+                        leave-to-class="transform opacity-0 scale-95">
+              <MenuItems
+                  class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
+                <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                  <a :href="item.href"
+                     :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm leading-6 text-gray-900']">{{
+                      item.name
+                    }}</a>
+                </MenuItem>
+              </MenuItems>
+            </transition>
+          </Menu>
+        </div>
+      </div>
+    </div>
+
     <!-- Static sidebar for desktop -->
-    <div class="bg-orange-500	hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 ">
-      <!-- Sidebar content -->
-      <p>Sidebar</p>
+    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex mt-32 lg:w-72 lg:flex-col-reverse">
+      <!-- Sidebar component, swap this element with another sidebar if you like -->
+      <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-red-300 px-6 pb-4">
+        <div class="flex h-16 shrink-0 items-center">
+          <img class="h-8 w-auto" src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
+        </div>
+        <nav class="flex flex-1 flex-col">
+          <ul role="list" class="flex flex-1 flex-col gap-y-7">
+            <li>
+              <ul role="list" class="-mx-2 space-y-1">
+                <li v-for="item in navigation" :key="item.name">
+                  <a :href="item.href"
+                     :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                    <component :is="item.icon"
+                               :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0']"
+                               aria-hidden="true"/>
+                    {{ item.name }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
+              <ul role="list" class="-mx-2 mt-2 space-y-1">
+                <li v-for="team in teams" :key="team.name">
+                  <a :href="team.href"
+                     :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                    <span
+                        :class="[team.current ? 'text-indigo-600 border-indigo-600' : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{
+                        team.initial
+                      }}</span>
+                    <span class="truncate">{{ team.name }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="mt-auto">
+              <a href="#"
+                 class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
+                <Cog6ToothIcon class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true"/>
+                Settings
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
 
     <div class="lg:pr-72">
 
-      <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-        <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
-          <span class="sr-only">Open sidebar</span>
-          <Bars3Icon class="h-6 w-6" aria-hidden="true"/>
-        </button>
-        <!-- Navbar items -->
-        <p>Navbar</p>
-      </div>
 
       <main class="bg-gray-200 py-10">
         <div class="px-4 sm:px-6 lg:px-8">
