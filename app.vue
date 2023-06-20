@@ -115,8 +115,6 @@
             <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
               <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
               <a href="#"
-                 class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">Dashboard</a>
-              <a href="#"
                  class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Team</a>
               <a href="#"
                  class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Projects</a>
@@ -136,22 +134,6 @@
                        placeholder="Search" type="search"/>
               </div>
             </div>
-          </div>
-          <div class="flex items-center lg:hidden">
-            <!-- Mobile menu button -->
-            <DisclosureButton
-                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-              <span class="sr-only">Open main menu</span>
-              <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true"/>
-              <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true"/>
-            </DisclosureButton>
-          </div>
-          <div class="hidden lg:ml-4 lg:flex lg:items-center">
-            <button type="button"
-                    class="flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-              <span class="sr-only">View notifications</span>
-              <BellIcon class="h-6 w-6" aria-hidden="true"/>
-            </button>
           </div>
         </div>
       </div>
