@@ -119,7 +119,7 @@
       </button>
 
       <!--Search Form-->
-      <div class="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
+      <div class="flex flex-1 items-center justify-center px-2 lg:ml-6">
         <div class="w-full max-w-lg lg:max-w-xs">
           <label for="search" class="sr-only">Search</label>
           <div class="relative">
@@ -137,9 +137,9 @@
       <div class="<!--hidden--> lg:ml-6 lg:flex lg:space-x-8">
         <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
         <a href="#"
-           class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Team</a>
+           class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Home</a>
         <a href="#"
-           class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Projects</a>
+           class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">About me</a>
       </div>
 
     </div>
