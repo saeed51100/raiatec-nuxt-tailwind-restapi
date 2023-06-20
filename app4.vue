@@ -64,18 +64,18 @@
     <!-- Static sidebar for desktop -->
     <div class="bg-orange-500	hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 ">
       <!-- Sidebar content -->
-      <p>Sidebar</p>
+      <p>ssssssss</p>
     </div>
 
     <div class="lg:pr-72">
-
-      <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+      <div
+          class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
         <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
           <span class="sr-only">Open sidebar</span>
           <Bars3Icon class="h-6 w-6" aria-hidden="true"/>
         </button>
         <!-- Navbar items -->
-        <p>Navbar</p>
+        <p>dgdgdgdg</p>
       </div>
 
       <main class="bg-gray-200 py-10">
