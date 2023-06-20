@@ -102,61 +102,23 @@
       </Dialog>
     </TransitionRoot>
 
-    <Disclosure as="nav" class="bg-blue-300 shadow">
-      <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-        <div class="flex h-16 justify-between">
-          <div class="flex px-2 lg:px-0">
-            <div class="flex flex-shrink-0 items-center">
-              <img class="block h-8 w-auto lg:hidden"
-                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"/>
-              <img class="hidden h-8 w-auto lg:block"
-                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"/>
-            </div>
-            <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
-              <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-              <a href="#"
-                 class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Team</a>
-              <a href="#"
-                 class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Projects</a>
-              <a href="#"
-                 class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Calendar</a>
-            </div>
-          </div>
-          <div class="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
-            <div class="w-full max-w-lg lg:max-w-xs">
-              <label for="search" class="sr-only">Search</label>
-              <div class="relative">
-                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <MagnifyingGlassIcon class="h-5 w-5 text-gray-400" aria-hidden="true"/>
-                </div>
-                <input id="search" name="search"
-                       class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                       placeholder="Search" type="search"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </Disclosure>
-
 
     <!--My navbar-->
     <div
         class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-
 
       <!-- Raiatec logo -->
       <div class="flex h-16 shrink-0 items-center">
         <img class="h-8 w-auto" src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
       </div>
 
+      <!--Modal button-->
       <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
         <span class="sr-only">Open sidebar</span>
         <Bars3Icon class="h-6 w-6" aria-hidden="true"/>
       </button>
 
+      <!--Search Form-->
       <div class="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
         <div class="w-full max-w-lg lg:max-w-xs">
           <label for="search" class="sr-only">Search</label>
@@ -171,15 +133,21 @@
         </div>
       </div>
 
+      <!--      Nav links-->
+      <div class="<!--hidden--> lg:ml-6 lg:flex lg:space-x-8">
+        <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
+        <a href="#"
+           class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Team</a>
+        <a href="#"
+           class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Projects</a>
+      </div>
+
     </div>
 
     <!-- Static sidebar for desktop -->
-    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex mt-32 lg:w-72 lg:flex-col-reverse">
+    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex mt-16 lg:w-72 lg:flex-col-reverse">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-red-300 px-6 pb-4">
-        <div class="flex h-16 shrink-0 items-center">
-          <img class="h-8 w-auto" src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
-        </div>
+      <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-red-300 px-6 pb-4 pt-5">
         <nav class="flex flex-1 flex-col">
           <ul role="list" class="flex flex-1 flex-col gap-y-7">
             <li>
