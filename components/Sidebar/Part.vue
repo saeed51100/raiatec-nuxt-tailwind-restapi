@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import Part from '@/components/ListOfPosts/Part.vue'
+import Part from '@/components/ListOfPosts/ListOfPostsPart.vue'
 
 export default {
   components: {
