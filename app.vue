@@ -1,8 +1,8 @@
 <template>
   <div>
     <MenuTop/>
-    <SidebarPart/>
-    <MainPart/>
+    <Sidebar/>
+    <Main/>
   </div>
 </template>
 
