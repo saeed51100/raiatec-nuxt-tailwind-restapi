@@ -41,20 +41,9 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+
 import {
-  Dialog,
-  DialogPanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  TransitionChild,
-  TransitionRoot,
-} from '@headlessui/vue'
-import {
-  Bars3Icon,
-  BellIcon,
+
   CalendarIcon,
   ChartPieIcon,
   Cog6ToothIcon,
@@ -62,9 +51,9 @@ import {
   FolderIcon,
   HomeIcon,
   UsersIcon,
-  XMarkIcon,
+
 } from '@heroicons/vue/24/outline'
-import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/vue/20/solid'
+
 
 const navigation = [
   {name: 'Dashboard', href: '#', icon: HomeIcon, current: true},
@@ -79,10 +68,6 @@ const teams = [
   {id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false},
   {id: 3, name: 'Workcation', href: '#', initial: 'W', current: false},
 ]
-const userNavigation = [
-  {name: 'Your profile', href: '#'},
-  {name: 'Sign out', href: '#'},
-]
 
-const sidebarOpen = ref(false)
+
 </script>
