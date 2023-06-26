@@ -15,9 +15,4 @@ import useWpApi from "~~/composables/useWpApi";
 
 const {data: posts, refresh, error} = await useWpApi().getPosts();
 
-defineProps<{
-  title?: string;
-  slug?: string;
-}>();
-
 </script>
