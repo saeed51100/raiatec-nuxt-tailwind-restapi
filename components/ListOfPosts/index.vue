@@ -1,12 +1,7 @@
 <template>
-  <div
-      v-for="post in posts"
-      :key="post.id"
-      :title="post.title.rendered"
-      :slug="post.slug"
-  >
-    <NuxtLink v-if="post.slug" :to="`/${post.slug}`">{{ post.title.rendered }}</NuxtLink>
 
+  <div v-for="post in posts">
+    <NuxtLink v-if="post.slug" :to="`/${post.slug}`">{{ post.title.rendered }}</NuxtLink>
   </div>
 
 </template>
