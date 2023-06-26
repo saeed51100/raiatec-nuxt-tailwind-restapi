@@ -14,8 +14,4 @@ import useWpApi from "~~/composables/useWpApi";
 import Define from "~/components/ListOfPosts/Define.vue";
 const {data: posts, refresh, error} = await useWpApi().getPosts();
 
-defineProps<{
-  title?: string;
-  slug?: string;
-}>();
 </script>
