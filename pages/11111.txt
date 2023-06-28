@@ -1,0 +1,24 @@
+من محتوای پستهای وبلاگم را با وردپرس تولید کرده و به
+وسیله wordpress api از آن در برنامه nuxt 3 استفاده می کنم و فرانت اند را هم
+با tailwindcss ساخته ام و وبلاگم بدون ارور کار می کند.
+حالا مشکل اینجاست با توجه به اینکه post content که
+ توسط وردپرس ساخته شده است دارای مقداری css است که وقتی آن را با کد:
+<div v-if="post.content" v-html="post.content.rendered"></div>
+نمایش می دهم با css برنامه tailwindcss تداخل ایجاد کرده و طرح
+ بندی صفحه را به هم می ریزد.آیا روشی در tiilwindcss وجود دارد
+   که با آن نام تمام کلاسهای استفاده شده در post content را عوض کرده
+   و یک نام کلاس منحصر به فرد به آنها اختصاص دهد ؟
+
+
+
+ راه حل دوم:
+
+Sure, here is another example of the combination of v-text and v-html:
+
+HTML
+<div v-if="post.content">
+  <h1 v-text="post.title"></h1>
+  <div v-html="post.content.rendered">
+    This is the post content, with the title rendered as text and the rest of the content rendered as HTML.
+  </div>
+</div>
