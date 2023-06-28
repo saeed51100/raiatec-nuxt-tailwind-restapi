@@ -1,0 +1,39 @@
+<script lang="ts" setup>
+const params = useRoute().params;
+
+const {data: posts} = await useWpApi().getPost(params.slug as string);
+const post = posts.value?.[0];
+
+useHead({
+  title: post?.title.rendered,
+  meta: [
+    {
+      name: "description",
+      content: `${post?.excerpt.rendered}`,
+    },
+  ],
+});
+
+
+
+const sanitizeContent = (content) => {
+  // Find and replace CSS classes in the content
+  let modifiedContent = content.replace(/class="/g, 'class="wp-');
+
+  // Find and replace CSS styles in the content
+  modifiedContent = modifiedContent.replace(/style="/g, 'style="wp-');
+
+  return modifiedContent;
+
+}
+
+</script>
+<template>
+
+  <div v-if="post">
+    <div v-if="post.content" v-html="sanitizeContent(post.content.rendered)"></div>
+  </div>
+
+
+</template>
+
