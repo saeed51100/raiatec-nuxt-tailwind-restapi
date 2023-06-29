@@ -34,7 +34,7 @@
                 <img class="h-8 w-auto" src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
               </div>
 
-              <ListOfPosts/>
+              <ListOfPosts @close-modal="sidebarOpen = false"/>
 
             </div>
           </DialogPanel>
