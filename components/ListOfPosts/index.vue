@@ -1,10 +1,6 @@
 <template>
 
-  <div
-      v-for="category in categories"
-      :key="(category ).id"
-      class="bg-red-200"
-  >
+  <div v-for="category in categories" :key="(category ).id" class="bg-red-200">
     {{ (category).name }}
   </div>
 
