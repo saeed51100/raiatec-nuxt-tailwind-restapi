@@ -13,7 +13,7 @@
           <li
               v-for="post in postsByCategory(category.id)"
               :key="post.id"
-              style="margin-top: 5px; list-style-type: none;"
+              style="margin-top: 15px; list-style-type: none;"
           >
             <NuxtLink v-if="post.slug" :to="`/${post.slug}`" @click="$emit('close-modal')">{{ post.title.rendered }}</NuxtLink>
           </li>
@@ -34,9 +34,6 @@ const loading = ref(false)
 const {data: posts,  error: postsError} = await useWpApi().getPosts();
 const {data: categories,  error: categoriesError} = await useWpApi().getCatgories();
 
-// Get current post ID and check if it's a single post
-const currentId = 0 // Replace this with the actual current post ID
-const isSingle = true // Replace this with the actual condition
 
 const postsByCategory = (categoryId) => {
   if (!posts.value) return []
