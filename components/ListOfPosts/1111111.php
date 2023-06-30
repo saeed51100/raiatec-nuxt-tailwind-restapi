@@ -1,6 +1,6 @@
 In WordPress, I have written the following php code that writes the list of posts and writes its category at the top of each category of posts:
-<!-- sidebar.php -->
 
+<!-- sidebar.php -->
 <div class="side-widget m-3">
     <h3>Post title</h3>
     <hr style="height: 3px">
@@ -26,7 +26,6 @@ if ($query->have_posts()) {
         $query->the_post();
 
 
-// https://stackoverflow.com/questions/676677/how-to-add-elements-to-an-empty-array-in-php
         $rt_post = [];
         foreach (get_the_category() as $fff) {
             $rt_post[] = $fff->name;
