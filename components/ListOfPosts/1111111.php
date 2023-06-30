@@ -126,3 +126,4 @@ wp_reset_postdata();
 
 Now I have written a program with nuxt 3 that takes the content from the wordpress api and I want to have the list of posts along with their categories like the code above.
 Please convert the above code to nuxt 3 code.
+I use the <script setup lang="ts"> syntax.
