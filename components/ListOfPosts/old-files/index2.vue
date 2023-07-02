@@ -1,32 +1,22 @@
+<!-- final from chatgpt4 -->
 <template>
   <div>
-    <div class="side-widget m-3">
-      <h3>Post title</h3>
-      <hr style="height: 3px" />
-    </div>
-
     <ul>
-      <li v-for="post in posts" :key="post.id">
-        <a
-            :href="post.link"
-            :class="{ 'list-group': post.id === currentId && isSingle }"
-        >
+      <li v-for="post in nonCategorizedPosts" :key="post.id" :style="{ marginTop: '5px', listStyleType: 'none' }">
+        <nuxt-link :to="post.link" :class="{ 'list-group': post.id === currentId && isSingle }">
           {{ post.title.rendered }}
-        </a>
+        </nuxt-link>
       </li>
     </ul>
 
-    <div v-for="category in categories" :key="category.term_id">
+    <div v-for="category in categories" :key="category.id">
       <h5 class="cat-title bg-info">{{ category.name }}</h5>
       <div class="cat-content">
         <ul>
-          <li v-for="post in category.posts" :key="post.id">
-            <a
-                :href="post.link"
-                :class="{ 'list-group': post.id === currentId && isSingle }"
-            >
+          <li v-for="post in category.posts" :key="post.id" :style="{ marginTop: '5px', listStyleType: 'none' }">
+            <nuxt-link :to="post.link" :class="{ 'list-group': post.id === currentId && isSingle }">
               {{ post.title.rendered }}
-            </a>
+            </nuxt-link>
           </li>
         </ul>
       </div>
@@ -34,39 +24,23 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      currentId: null,
-      isSingle: false,
-      posts: [],
-      categories: [],
-    };
-  },
-  async fetch() {
-    const response = await this.$axios.get('https://your-wordpress-api-url/wp-json/wp/v2/posts?_embed');
-    this.posts = response.data;
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+import useWpApi from '~/composables/useWpApi';
 
-    // Extract unique categories from the posts
-    const uniqueCategories = [...new Set(this.posts.flatMap(post => post.categories))];
-    for (const categoryId of uniqueCategories) {
-      const categoryResponse = await this.$axios.get(
-          `https://your-wordpress-api-url/wp-json/wp/v2/categories/${categoryId}?_embed&per_page=100`
-      );
-      const category = categoryResponse.data;
+const { data: posts } = await useWpApi().getPosts();
+const { data: categories } = await useWpApi().getCatgories();
 
-      const postsResponse = await this.$axios.get(
-          `https://your-wordpress-api-url/wp-json/wp/v2/posts?_embed&categories=${categoryId}`
-      );
-      const posts = postsResponse.data;
+const currentId = ref(null); // Set the current ID
+const isSingle = ref(false); // Set the single flag
 
-      this.categories.push({
-        term_id: category.term_id,
-        name: category.name,
-        posts,
-      });
-    }
-  },
-};
+const nonCategorizedPosts = computed(() => {
+  return posts.value.filter((post) => !post.categories.length);
+});
+
+categories.value.forEach((category) => {
+  category.posts = posts.value.filter((post) =>
+      post.categories.includes(category.id)
+  );
+});
 </script>
