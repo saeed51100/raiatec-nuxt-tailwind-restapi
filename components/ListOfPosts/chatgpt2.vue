@@ -1,15 +1,17 @@
-<!--To convert the given PHP WordPress code to Nuxt 3 using the <script setup lang="ts"> syntax (Composition API), we'll need to use JavaScript and the Vue.js framework. Nuxt 3 doesn't exist yet as of my knowledge cutoff in September 2021, but we can use Nuxt 2 with the Composition API instead. Keep in mind that Nuxt 3 may have new features and changes, but this example should be a good starting point.-->
+<!--To convert the given PHP WordPress code to
+ Nuxt 3 using the <script setup lang="ts">
+  syntax (Composition API), we'll need to use JavaScript
+   and the Vue.js framework. Nuxt 3 doesn't exist yet as of
+    my knowledge cutoff in September 2021, but we can use
+     Nuxt 2 with the Composition API instead. Keep in mind that
+      Nuxt 3 may have new features and changes, but this example
+       should be a good starting point.
+        First, install the required packages by running:
+         npm install @nuxtjs/composition-api
+          Next, create a new Nuxt 2 project or use an existing one.
+           Create a new component file, for example, "MyComponent.vue":
+-->
 
-<!--    First, install the required packages by running:-->
-<!--    bash-->
-<!--Copy code-->
-<!--npm install @nuxtjs/composition-api-->
-<!--Next, create a new Nuxt 2 project or use an existing one.-->
-
-<!--    Create a new component file, for example, "MyComponent.vue":-->
-
-<!--html-->
-<!--Copy code-->
 <template>
 <div>
     <ul v-if="posts.length">

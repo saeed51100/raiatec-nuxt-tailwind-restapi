@@ -1,4 +1,5 @@
-<!--Here's the converted code using Nuxt.js 3 with the Composition API syntax:-->
+<!--Here's the converted code using Nuxt.js 3 with the
+Composition API syntax:-->
 
 <!--html-->
 <!--Copy code-->
@@ -63,6 +64,12 @@ const isSinglePost = computed(() => {
 });
 </script>
 
-<!--Please note that you need to replace the placeholder logic for fetching posts and categories with your actual implementation. Also, make sure to define the necessary data structure to store the fetched posts and categories in the script setup part before the computed properties and methods are used.-->
+<!--Please note that you need to replace the placeholder logic
+for fetching posts and categories with your actual implementation.
+ Also, make sure to define the necessary data structure to store
+  the fetched posts and categories in the script setup part before
+   the computed properties and methods are used.-->
 
-<!--The code assumes you have a posts array containing objects with properties like permalink, title, ID, and categories (an array of category names) that you can populate with the appropriate data.-->
+<!--The code assumes you have a posts array containing objects with
+ properties like permalink, title, ID, and categories (an array of
+  category names) that you can populate with the appropriate data.-->
