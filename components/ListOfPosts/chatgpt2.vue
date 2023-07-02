@@ -66,7 +66,16 @@ import MyComponent from '~/components/MyComponent.vue';
 const currentId = ref(0);
 const isSingle = ref(false);
 </script>
-In this code, we're using the Composition API's ref to store the currentId and isSingle values, which will be passed to the MyComponent.
+<!--In this code, we're using the Composition API's ref to
+ store the currentId and isSingle values, which will be passed
+  to the MyComponent.
 
-If you want to use the category information as well, you can modify the component accordingly by adding the category data to the fetched posts and use it for rendering.
-Please note that this is a basic example and may need further adjustments based on your specific WordPress setup and requirements. Also, the Nuxt 3 version might be different, but the core concepts of using the Composition API to fetch data and manage state will likely remain the same.
+If you want to use the category information as well, you can modify
+ the component accordingly by adding the category data to the fetched
+  posts and use it for rendering.
+   Please note that this is a basic example and may need further
+    adjustments based on your specific WordPress setup and requirements.
+     Also, the Nuxt 3 version might be different, but the core concepts
+      of using the Composition API to fetch data and manage state will likely
+       remain the same.
+-->
