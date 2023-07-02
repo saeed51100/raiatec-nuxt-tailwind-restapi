@@ -6,4 +6,4 @@ In other words, I want, for example, a category of Categorized posts
 to be displayed after a nonCategorizedPosts post, and then a new generated
 nonCategorizedPosts post to be placed after that, and so on.
 I did this with WordPress, which I've included the code for above.
-Please rewrite the code using that logic.
+Please rewrite the nuxt 3 code using that logic.
