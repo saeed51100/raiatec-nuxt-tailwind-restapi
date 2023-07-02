@@ -1,4 +1,9 @@
-The code works without errors, but the problem is that this code does not respect the chronological order of displaying the posts' titles. That is, first it displays all the uncategorized posts, then it displays the categorized posts.
-In other words, I want, for example, a category of Categorized posts to be displayed after a nonCategorizedPosts post, and then a new generated nonCategorizedPosts post to be placed after that, and so on.
+The code works without errors, but the problem is that this code does not
+ respect the chronological order of displaying the posts' titles.
+ That is, first it displays all the uncategorized posts, then it
+ displays the categorized posts.
+In other words, I want, for example, a category of Categorized posts
+to be displayed after a nonCategorizedPosts post, and then a new generated
+nonCategorizedPosts post to be placed after that, and so on.
 I did this with WordPress, which I've included the code for above.
 Please rewrite the code using that logic.
