@@ -1,7 +1,7 @@
-Here's the converted code using Nuxt.js 3 with the Composition API syntax:
+<!--Here's the converted code using Nuxt.js 3 with the Composition API syntax:-->
 
-html
-Copy code
+<!--html-->
+<!--Copy code-->
 <template>
   <div>
     <ul>
@@ -37,9 +37,11 @@ Copy code
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
+const {data: posts, error} = await useWpApi().getPosts();
+const {data: categories} = await useWpApi().getCatgories();
+
 const currentId = ref(<?php echo $current_id; ?>);
-const posts = ref([]);
-const categories = ref([]);
+
 
 // Fetch posts using API or other methods
 // Update `posts` and `categories` with the fetched data
@@ -60,6 +62,7 @@ const isSinglePost = computed(() => {
   return true;
 });
 </script>
-Please note that you need to replace the placeholder logic for fetching posts and categories with your actual implementation. Also, make sure to define the necessary data structure to store the fetched posts and categories in the script setup part before the computed properties and methods are used.
 
-The code assumes you have a posts array containing objects with properties like permalink, title, ID, and categories (an array of category names) that you can populate with the appropriate data.
+<!--Please note that you need to replace the placeholder logic for fetching posts and categories with your actual implementation. Also, make sure to define the necessary data structure to store the fetched posts and categories in the script setup part before the computed properties and methods are used.-->
+
+<!--The code assumes you have a posts array containing objects with properties like permalink, title, ID, and categories (an array of category names) that you can populate with the appropriate data.-->
