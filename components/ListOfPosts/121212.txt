@@ -1,9 +1,151 @@
-The code works without errors, but the problem is that this code does not
- respect the chronological order of displaying the posts' titles.
- That is, first it displays all the uncategorized posts, then it
- displays the categorized posts.
-In other words, I want, for example, a category of Categorized posts
-to be displayed after a nonCategorizedPosts post, and then a new generated
-nonCategorizedPosts post to be placed after that, and so on.
-I did this with WordPress, which I've included the code for above.
-Please rewrite the nuxt 3 code using that logic.
+In nuxt 3, I have written the following code to display the list of posts along with the category, which works without error:
+<!-- index.vue -->
+<template>
+   <div>
+     <ul><li>
+       <li v-for="post in nonCategorizedPosts" :key="post.id" >
+         <nuxt-link :to="post.link" :class="{ 'list-group': post.id === currentId && isSingle }">
+           {{ post.title.rendered }}
+         </next-link>
+       </li>
+     </ul>
+
+     <div v-for="category in categories" :key="category.id">
+       <h5 class="bg-red-200">{{ category.name }}</h5>
+       <div>
+         <ul><li>
+           <li v-for="post in category.posts" :key="post.id" :style="{ marginTop: '5px', listStyleType: 'none' }">
+             <nuxt-link :to="post.link" :class="{ 'list-group': post.id === currentId && isSingle }">
+               {{ post.title.rendered }}
+             </next-link>
+           </li>
+         </ul>
+       </div>
+     </div>
+   </div>
+</template>
+
+<script setup lang="ts">
+import {ref, computed} from 'vue';
+import useWpApi from '~/composables/useWpApi';
+
+const {data: posts} = await useWpApi().getPosts();
+const {data: categories} = await useWpApi().getCategories();
+
+const currentId = ref(null); // Set the current ID
+const isSingle = ref(false); // Set the single flag
+
+const nonCategorizedPosts = computed(() => {
+   return posts.value.filter((post) => !post.categories.length);
+});
+
+categories.value.forEach((category) => {
+   category.posts = posts.value.filter((post) =>
+       post.categories.includes(category.id)
+   );
+});
+</script>
+<!-- composables/useWpApi.ts -->
+/**
+  * WordPress Composables
+  * A collection of WordPress composable functions.
+  */
+
+import { Post } from "~~/types/post";
+
+export default () => {
+   const config = useRuntimeConfig();
+   const WP_URL: string = config.public.wpUri;
+
+   const get = async <T>(endpoint: string) => {
+     return useFetch<T>(`${WP_URL}/wp-json/wp/v2/${endpoint}`);
+   };
+
+   const getPosts = async (
+     category?: number,
+     page: number = 1,
+     perPgae: number = 20,
+     fields: string = "author,id,excerpt,title,link,slug,date"
+   ) => {
+     let query: string = `posts?page=${page}&per_page=${perPgae}&_embed=1`;
+     if (category) {
+       query += `&categories=${category}`;
+     }
+     return get<Post[]>(query);
+   };
+
+   const getPost = async (slug: string) => {
+     return get<Post[]>(`posts?slug=${slug}&_embed=1`);
+   };
+
+   const getCatgories = async (fields: string = "name,slug,count") => {
+     return get<any>(`categories`);
+   };
+
+   const getCatgory = async (slug: string) => {
+     return get<any>(`categories?slug=${slug}`);
+   };
+
+   return {
+     get
+     getPosts,
+     getPost,
+     getCategories,
+     getCategory,
+   };
+};
+// composables/useWpApi.ts
+But the problem is that this code does not respect the time sequence of displaying the posts' titles. It means that first it displays all the non-categorized posts, then it displays the categorized posts.
+In other words, I want, for example, after a non-categorized post, a Categorized post will be displayed, and then a new post that was generated will be placed after it, etc.
+I have done this with wordpress, the code is as follows:
+<?php
+$current_id = get_the_ID();
+$args3 = array('post_type' => 'post', 'orderby' => 'ID', 'order' => 'DESC',);
+$query = new WP_Query($args3);
+$rt_all = [];
+if ($query->have_posts()) {
+     while ($query->have_posts()) {
+         $query->the_post();
+         $rt_post = [];
+         foreach (get_the_category() as $fff) {
+             $rt_post[] = $fff->name;
+         }
+         $rt_new = array_diff($rt_post, $rt_all);
+         $rt_all = array_merge($rt_all, $rt_new);
+         if (empty($rt_post)) {
+             ?>
+             <li style=" margin-top: 5px; list-style-type: none; "><a id="alltitle" href="<?php the_permalink() ?>"
+                     <?php $post = get_post();
+                     echo($post->ID == $current_id && is_single() ? 'class="list-group"' : ''); ?>
+                 ><?php the_title(); ?></a>
+             </li>
+             <?php
+         }
+         foreach ($rt_new as $term) {
+             $args1 = array(
+                 'orderby' => 'ID',
+                 'order' => 'ASC',
+                 'tax_query' => array(
+                     array('taxonomy' => 'category', 'field' => 'slug', 'terms' => $term,))
+             );
+             $posts1 = new WP_Query($args1);
+             if ($posts1->have_posts()) {
+                 ?>
+                 <h5><?php echo $term; ?></h5>
+                 <div><?php
+                     while ($posts1->have_posts()) {
+                         $posts1->the_post();
+                         ?>
+                         <li><a id="alltitle" href="<?php the_permalink() ?>"<?php $post = get_post();
+                             echo($post->ID == $current_id && is_single() ? 'class="list-group"' : ''); ?>><?php the_title(); ?></a></li>
+                         <?php
+                     }
+                     ?></div>
+                 <?php
+             }
+         }
+     }
+}
+wp_reset_postdata();
+?>
+Please fix my nuxt 3 code with this logic.
