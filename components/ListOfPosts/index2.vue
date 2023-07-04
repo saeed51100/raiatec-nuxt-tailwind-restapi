@@ -1,17 +1,16 @@
 <template>
   <div>
     <ul>
-      <li v-for="post in nonCategorizedPosts" :key="post.id">
-        <!-- Please write me the following two lines of code in nuxt 3 -->
-        var = var + post.title.rendered
-        print array
-
+      <li v-for="post in nonCategorizedPosts" :key="post.id" >
+        <nuxt-link :to="post.link" :class="{ 'list-group': post.id === currentId && isSingle }">
+          {{ post.title.rendered }}
+        </nuxt-link>
       </li>
     </ul>
 
     <div v-for="category in categories" :key="category.id">
       <h5 class="bg-red-200">{{ category.name }}</h5>
-      <div>
+      <div >
         <ul>
           <li v-for="post in category.posts" :key="post.id" :style="{ marginTop: '5px', listStyleType: 'none' }">
             <nuxt-link :to="post.link" :class="{ 'list-group': post.id === currentId && isSingle }">
