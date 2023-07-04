@@ -12,7 +12,6 @@
       </template>
     </div>
 
-
   </div>
 </template>
 
@@ -30,6 +29,11 @@ const nonCategorizedPosts = computed(() => {
   return posts.value.filter((post) => !post.categories.length);
 });
 
+categories.value.forEach((category) => {
+  category.posts = posts.value.filter((post) =>
+      post.categories.includes(category.id)
+  );
+});
 
 // Initialize a variable to store concatenated titles
 const concatenatedTitles = ref('');

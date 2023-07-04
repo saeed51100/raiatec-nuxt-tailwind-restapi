@@ -15,7 +15,6 @@ In the nuxt 3 code below, write the v-else code for me so that:
       </template>
     </div>
 
-
   </div>
 </template>
 
@@ -24,7 +23,7 @@ import {ref, computed} from 'vue';
 import useWpApi from '~/composables/useWpApi';
 
 const {data: posts} = await useWpApi().getPosts();
-const {data: categories} = await useWpApi().getCategories();
+const {data: categories} = await useWpApi().getCatgories();
 
 const currentId = ref(null); // Set the current ID
 const isSingle = ref(false); // Set the single flag
@@ -33,6 +32,11 @@ const nonCategorizedPosts = computed(() => {
   return posts.value.filter((post) => !post.categories.length);
 });
 
+categories.value.forEach((category) => {
+  category.posts = posts.value.filter((post) =>
+      post.categories.includes(category.id)
+  );
+});
 
 // Initialize a variable to store concatenated titles
 const concatenatedTitles = ref('');
