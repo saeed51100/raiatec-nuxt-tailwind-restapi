@@ -2,8 +2,13 @@
   <div>
 
     <div v-for="post in posts " :key="post.id">
-      <!-- show post.title if exist in concatenatedTitles else show "NOT EXIST" -->
-      {{ concatenatedTitles.includes(post.title.rendered) ? post.title.rendered : 'NOT EXIST' }}
+      <!-- show post.title if exists in concatenatedTitles else execute new logic -->
+      <template v-if="concatenatedTitles.includes(post.title.rendered)">
+        {{ post.title.rendered }}
+      </template>
+      <template v-else>
+        <p>NOOOOT EEEEE</p>
+      </template>
     </div>
 
 
