@@ -7,7 +7,8 @@
         {{ post.title.rendered }}
       </template>
       <template v-else>
-        <p>NOOOOT EEEEE</p>
+        <!-- categorized posts -->
+
       </template>
     </div>
 
