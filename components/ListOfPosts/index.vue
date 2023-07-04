@@ -1,26 +1,12 @@
 <template>
   <div>
-    <ul>
-      <li v-for="post in nonCategorizedPosts" :key="post.id">
-        <!-- Please write me the following two lines of code in nuxt 3 -->
-        var = var + post.title.rendered
-        print array
 
-      </li>
-    </ul>
-
-    <div v-for="category in categories" :key="category.id">
-      <h5 class="bg-red-200">{{ category.name }}</h5>
-      <div>
-        <ul>
-          <li v-for="post in category.posts" :key="post.id" :style="{ marginTop: '5px', listStyleType: 'none' }">
-            <nuxt-link :to="post.link" :class="{ 'list-group': post.id === currentId && isSingle }">
-              {{ post.title.rendered }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </div>
+    <div v-for="post in posts " :key="post.id">
+      <!-- show post.title if exist in concatenatedTitles else show "NOT EXIST" -->
+      {{ concatenatedTitles.includes(post.title.rendered) ? post.title.rendered : 'NOT EXIST' }}
     </div>
+
+
   </div>
 </template>
 
@@ -31,16 +17,18 @@ import useWpApi from '~/composables/useWpApi';
 const {data: posts} = await useWpApi().getPosts();
 const {data: categories} = await useWpApi().getCatgories();
 
-const currentId = ref(null); // Set the current ID
-const isSingle = ref(false); // Set the single flag
 
 const nonCategorizedPosts = computed(() => {
   return posts.value.filter((post) => !post.categories.length);
 });
 
-categories.value.forEach((category) => {
-  category.posts = posts.value.filter((post) =>
-      post.categories.includes(category.id)
-  );
+
+// Initialize a variable to store concatenated titles
+const concatenatedTitles = ref('');
+
+// Concatenate post titles and store them in the 'concatenatedTitles' variable
+nonCategorizedPosts.value.forEach((post) => {
+  concatenatedTitles.value += post.title.rendered;
 });
+
 </script>
