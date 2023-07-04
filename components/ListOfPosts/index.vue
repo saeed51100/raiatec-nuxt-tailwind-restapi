@@ -22,6 +22,8 @@ import useWpApi from '~/composables/useWpApi';
 const {data: posts} = await useWpApi().getPosts();
 const {data: categories} = await useWpApi().getCatgories();
 
+const currentId = ref(null); // Set the current ID
+const isSingle = ref(false); // Set the single flag
 
 const nonCategorizedPosts = computed(() => {
   return posts.value.filter((post) => !post.categories.length);
