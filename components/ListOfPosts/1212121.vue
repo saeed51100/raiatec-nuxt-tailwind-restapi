@@ -1,6 +1,6 @@
 In the nuxt 3 code below, write the v-else code for me so that:
-1- write the current post category and write all the blog posts related to that category below it.
-2- Repeat this in the next loop if that category is not repeated.
+Displaying Current Category and Related Posts And this category should not be repeated
+
 <template>
   <div>
 
