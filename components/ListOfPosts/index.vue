@@ -45,8 +45,8 @@ categories.value.forEach((category) => {
 });
 
 // Initialize a variable to store concatenated titles
-const concatenatedTitles = ref('');
-const concatenatedCategory = ref('');
+const concatenatedTitles = ref([]);
+const concatenatedCategory = ref([]);
 
 // Concatenate post titles and store them in the 'concatenatedTitles' variable
 nonCategorizedPosts.value.forEach((post) => {
