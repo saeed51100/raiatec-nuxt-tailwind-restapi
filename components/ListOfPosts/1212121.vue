@@ -1,5 +1,5 @@
 In the nuxt 3 code below, write the v-else code for me so that:
-Displaying Current Category and Related Posts And this category should not be repeated
+Displaying Current Category and Related Posts And this category
 
 <template>
   <div>

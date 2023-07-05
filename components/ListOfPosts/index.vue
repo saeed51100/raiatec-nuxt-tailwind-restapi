@@ -8,7 +8,16 @@
       </template>
       <template v-else>
         <!-- categorized posts -->
-
+        <div v-for="category in categories" :key="category.id">
+          <template v-if="post.categories.includes(category.id)">
+            <h3 class="bg-red-200">{{ category.name }}</h3>
+            <ul>
+              <li v-for="relatedPost in category.posts" :key="relatedPost.id">
+                {{ relatedPost.title.rendered }}
+              </li>
+            </ul>
+          </template>
+        </div>
       </template>
     </div>
 
@@ -21,9 +30,6 @@ import useWpApi from '~/composables/useWpApi';
 
 const {data: posts} = await useWpApi().getPosts();
 const {data: categories} = await useWpApi().getCatgories();
-
-const currentId = ref(null); // Set the current ID
-const isSingle = ref(false); // Set the single flag
 
 const nonCategorizedPosts = computed(() => {
   return posts.value.filter((post) => !post.categories.length);
