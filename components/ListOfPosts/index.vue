@@ -11,6 +11,8 @@
         <div v-for="category in categories" :key="category.id">
           <template v-if="post.categories.includes(category.id)">
             <h3 class="bg-red-200">{{ category.name }}</h3>
+            <!-- Store category.name to array -->
+            concatenatedCategory += category.name
             <ul>
               <li v-for="relatedPost in category.posts" :key="relatedPost.id">
                 {{ relatedPost.title.rendered }}
@@ -43,6 +45,7 @@ categories.value.forEach((category) => {
 
 // Initialize a variable to store concatenated titles
 const concatenatedTitles = ref('');
+const concatenatedCategory = ref('');
 
 // Concatenate post titles and store them in the 'concatenatedTitles' variable
 nonCategorizedPosts.value.forEach((post) => {
