@@ -11,8 +11,9 @@
         <div v-for="category in categories" :key="category.id">
           <template v-if="post.categories.includes(category.id)">
             <h3 class="bg-red-200">{{ category.name }}</h3>
+
             <!-- Store category.name to array -->
-            concatenatedCategory += category.name
+            concatenatedCategory.push(category.name)
             <ul>
               <li v-for="relatedPost in category.posts" :key="relatedPost.id">
                 {{ relatedPost.title.rendered }}
