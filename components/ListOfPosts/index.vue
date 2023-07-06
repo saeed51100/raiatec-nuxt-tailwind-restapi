@@ -36,8 +36,8 @@ const nonCategorizedPosts = computed(() => {
   return posts.value.filter(post => !post.categories.length);
 });
 
-categories.value.forEach((category) => {
-  category.posts = posts.value.filter((post) =>
+categories.value.forEach(category => {
+  category.posts = posts.value.filter(post =>
       post.categories.includes(category.id)
   );
 });
