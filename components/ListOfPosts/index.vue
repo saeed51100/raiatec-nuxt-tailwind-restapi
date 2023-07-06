@@ -3,10 +3,7 @@
 
     <div v-for="post in posts " :key="post.id">
       <!-- show post.title if exists in concatenatedTitles else execute new logic -->
-      <template v-if="concatenatedTitles.includes(post.title.rendered)">
-        {{ post.title.rendered }}
-      </template>
-      <template v-else>
+      <template v-if="!concatenatedTitles.includes(post.title.rendered)">
         <!-- categorized posts -->
         <div v-for="category in categories" :key="category.id">
           <template v-if="post.categories.includes(category.id)">
