@@ -1,21 +1,17 @@
-Part code <!-- Store category.name to array -->
-In the following code, modify it for me so that the value of category.name is added to the array in each loop
+in this code:
 <template>
   <div>
 
     <div v-for="post in posts " :key="post.id">
       <!-- show post.title if exists in concatenatedTitles else execute new logic -->
-      <template v-if="concatenatedTitles.includes(post.title.rendered)">
-        {{ post.title.rendered }}
-      </template>
-      <template v-else>
+      <template v-if="!concatenatedTitles.includes(post.title.rendered)">
         <!-- categorized posts -->
         <div v-for="category in categories" :key="category.id">
-          <template v-if="post.categories.includes(category.id)">
+          <template v-if="post.categories.includes(category.id) && (category.name not repeated)">
             <h3 class="bg-red-200">{{ category.name }}</h3>
-            <!-- Store category.name to array -->
-            concatenatedCategory += category.name
-            <ul><li>
+
+
+            <ul>
               <li v-for="relatedPost in category.posts" :key="relatedPost.id">
                 {{ relatedPost.title.rendered }}
               </li>
@@ -46,8 +42,8 @@ categories.value.forEach((category) => {
 });
 
 // Initialize a variable to store concatenated titles
-const concatenatedTitles = ref('');
-const concatenatedCategory = ref('');
+const concatenatedTitles = ref([]);
+const concatenatedCategory = ref([]);
 
 // Concatenate post titles and store them in the 'concatenatedTitles' variable
 nonCategorizedPosts.value.forEach((post) => {
@@ -55,3 +51,7 @@ nonCategorizedPosts.value.forEach((post) => {
 });
 
 </script>
+
+Write me the code of the section (category.name not repeated).
+With this in mind:
+[plugin:vite:vue] Tags with side effect (<script> and <style>) are ignored in client component templates.
