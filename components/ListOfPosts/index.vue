@@ -6,7 +6,7 @@
       <template v-if="!concatenatedTitles.includes(post.title.rendered)">
         <!-- categorized posts -->
         <div v-for="category in categories" :key="category.id">
-          <template v-if="post.categories.includes(category.id) && (category.name not repeated)">
+          <template v-if="post.categories.includes(category.id) && !isCategoryRepeated(category.name)">
             <h3 class="bg-red-200">{{ category.name }}</h3>
 
 
@@ -47,6 +47,19 @@ const concatenatedCategory = ref([]);
 // Concatenate post titles and store them in the 'concatenatedTitles' variable
 nonCategorizedPosts.value.forEach((post) => {
   concatenatedTitles.value += post.title.rendered;
+});
+
+// Computed property to check if category name is repeated
+const isCategoryRepeated = computed(() => {
+  const uniqueCategories = new Set();
+  return (categoryName) => {
+    if (uniqueCategories.has(categoryName)) {
+      return true; // Category name is repeated
+    } else {
+      uniqueCategories.add(categoryName);
+      return false; // Category name is not repeated
+    }
+  };
 });
 
 </script>
