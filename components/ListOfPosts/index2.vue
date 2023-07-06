@@ -3,14 +3,12 @@
 
     <div v-for="post in posts " :key="post.id">
       <!-- show post.title if exists in concatenatedTitles else execute new logic -->
-      <template v-if="concatenatedTitles.includes(post.title.rendered)">
-        {{ post.title.rendered }}
-      </template>
-      <template v-else>
+      <template v-if="!concatenatedTitles.includes(post.title.rendered)">
         <!-- categorized posts -->
         <div v-for="category in categories" :key="category.id">
           <template v-if="post.categories.includes(category.id) && !isCategoryRepeated(category.name)">
             <h3 class="bg-red-200">{{ category.name }}</h3>
+
 
             <ul>
               <li v-for="relatedPost in category.posts" :key="relatedPost.id">
@@ -44,7 +42,7 @@ categories.value.forEach((category) => {
 
 // Initialize a variable to store concatenated titles
 const concatenatedTitles = ref([]);
-
+const concatenatedCategory = ref([]);
 
 // Concatenate post titles and store them in the 'concatenatedTitles' variable
 nonCategorizedPosts.value.forEach((post) => {
@@ -63,4 +61,5 @@ const isCategoryRepeated = computed(() => {
     }
   };
 });
+
 </script>
