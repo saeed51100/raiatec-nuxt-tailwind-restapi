@@ -13,7 +13,7 @@
             <h3 class="bg-red-200">{{ category.name }}</h3>
 
             <ul>
-              <li v-for="relatedPost in category.posts" :key="relatedPost.id">
+              <li v-for="relatedPost in category.posts.slice().reverse()" :key="relatedPost.id">
                 {{ relatedPost.title.rendered }}
               </li>
             </ul>
