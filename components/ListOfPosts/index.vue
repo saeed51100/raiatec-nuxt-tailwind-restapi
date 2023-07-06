@@ -33,7 +33,7 @@ const {data: posts} = await useWpApi().getPosts();
 const {data: categories} = await useWpApi().getCatgories();
 
 const nonCategorizedPosts = computed(() => {
-  return posts.value.filter((post) => !post.categories.length);
+  return posts.value.filter(post => !post.categories.length);
 });
 
 categories.value.forEach((category) => {
