@@ -50,17 +50,21 @@ categories.value.forEach(category => {
 const concatenatedTitles = ref([]);
 
 
+// Concatenate post titles and store them in the 'concatenatedTitles' variable
+nonCategorizedPosts.value?.forEach((post) => {
+  concatenatedTitles.value += post.title.rendered;
+});
 
-
-
-// Watch the 'posts' variable and update the 'concatenatedTitles' variable accordingly
-watch(
-    () => posts.value,
-    (newPosts) => {
-      concatenatedTitles.value = [];
-      newPosts?.forEach((post) => {
-        concatenatedTitles.value += post.title.rendered;
-      });
+// Computed property to check if category name is repeated
+const isCategoryRepeated = computed(() => {
+  const uniqueCategories = new Set();
+  return (categoryName: string) => {
+    if (uniqueCategories.has(categoryName)) {
+      return true; // Category name is repeated
+    } else {
+      uniqueCategories.add(categoryName);
+      return false; // Category name is not repeated
     }
-);
+  };
+});
 </script>
