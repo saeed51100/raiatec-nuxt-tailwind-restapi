@@ -5,7 +5,7 @@ In the nuxt 3 program, using the following code, I have shown the list of posts 
     <div v-for="post in posts " :key="post.id">
       <!-- show post.title if exists in concatenatedTitles else execute new logic -->
       <template v-if="concatenatedTitles.includes(post.title.rendered)">
-        <nuxt-link :to="`/${post.slug}`" @click="$emit('close-modal')">
+        <nuxt-link :to="`/${post.slug}`" @click="$emit('close-modal')" :key="post.slug">
           {{ post.title.rendered }}
         </nuxt-link>
       </template>
@@ -17,7 +17,7 @@ In the nuxt 3 program, using the following code, I have shown the list of posts 
 
             <ul>
               <li v-for="relatedPost in category.posts.slice().reverse()" :key="relatedPost.id">
-                <nuxt-link :to="`/${relatedPost.slug}`" @click="$emit('close-modal')">
+                <nuxt-link :to="`/${relatedPost.slug}`" @click="$emit('close-modal')" :key="relatedPost.slug">
                   {{ relatedPost.title.rendered }}
                 </nuxt-link>
               </li>
@@ -47,14 +47,16 @@ categories.value.forEach(category => {
   );
 });
 
-// Initialize a variable to store concatenated titles
+
+// Initialize an array to store concatenated titles
 const concatenatedTitles = ref([]);
 
 
-// Concatenate post titles and store them in the 'concatenatedTitles' variable
+// Add post titles into the 'concatenatedTitles' array
 nonCategorizedPosts.value?.forEach((post) => {
-  concatenatedTitles.value += post.title.rendered;
+  concatenatedTitles.value.push(post.title.rendered);
 });
+
 
 // Computed property to check if category name is repeated
 const isCategoryRepeated = computed(() => {
