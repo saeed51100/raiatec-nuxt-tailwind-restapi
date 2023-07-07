@@ -126,6 +126,6 @@ return useFetch<T>(`${WP_URL}/wp-json/wp/v2/${endpoint}`);
       };
       // composables/useWpApi.ts
 
-But the problem is that sometimes the list of posts in the sidebar is not rendered correctly and I have to super refresh the browser so that the sidebar is displayed correctly.
-In other words, sometimes after clicking on a post link and displaying the corresponding post, when I use the back button of the browser or when I use Home in the navbar, the sidebar is not displayed in full and only the v-if part , and not the v-else section, and I have to refresh the browser with ctrl-f5 to get the sidebar to display properly.
-Where is the problem with my code?
+      But the problem is that when clicking on the home button, the list of sidebar posts is not rendered correctly and I have to refresh the browser so that the sidebar is displayed correctly.
+      In other words, after clicking Home in the navigation bar, the sidebar is not fully displayed, only the v-if part, and not the v-else part, and I have to refresh the browser with ctrl-f5 to display the sidebar correctly. to be given.
+      Where is the problem with my code?
