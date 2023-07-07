@@ -1,4 +1,7 @@
-In the nuxt 3 program, using the following code, I have shown the list of posts and categories in the sidebar:
+In the nuxt 3 program, using the following code, I have
+shown the list of posts and categories in the sidebar:
+
+<!-- components/ListOfPosts/index.vue -->
 <template>
   <div>
 
@@ -71,6 +74,57 @@ const isCategoryRepeated = computed(() => {
   };
 });
 </script>
+
+<!-- composables/useWpApi.ts -->
+/**
+* WordPress Composables
+* A collection of WordPress composable functions.
+*/
+
+import { Post } from "~~/types/post";
+
+export default () => {
+const config = useRuntimeConfig();
+const WP_URL: string = config.public.wpUri;
+
+const get = async <T>(endpoint: string) => {
+return useFetch<T>(`${WP_URL}/wp-json/wp/v2/${endpoint}`);
+  };
+
+  const getPosts = async (
+  category?: number,
+  page: number = 1,
+  perPgae: number = 20,
+  fields: string = "author,id,excerpt,title,link,slug,date"
+  ) => {
+  let query: string = `posts?page=${page}&per_page=${perPgae}&_embed=1`;
+  if (category) {
+  query += `&categories=${category}`;
+  }
+  return get<Post[]>(query);
+  };
+
+  const getPost = async (slug: string) => {
+  return get<Post[]>(`posts?slug=${slug}&_embed=1`);
+  };
+
+  const getCatgories = async (fields: string = "name,slug,count") => {
+  return get<any>(`categories`);
+    };
+
+    const getCatgory = async (slug: string) => {
+    return get<any>(`categories?slug=${slug}`);
+      };
+
+      return {
+      get,
+      getPosts,
+      getPost,
+      getCatgories,
+      getCatgory,
+      };
+      };
+      // composables/useWpApi.ts
 
 But the problem is that sometimes the list of posts in the sidebar is not rendered correctly and I have to super refresh the browser so that the sidebar is displayed correctly.
 In other words, sometimes after clicking on a post link and displaying the corresponding post, when I use the back button of the browser or when I use Home in the navbar, the sidebar is not displayed in full and only the v-if part , and not the v-else section, and I have to refresh the browser with ctrl-f5 to get the sidebar to display properly.
