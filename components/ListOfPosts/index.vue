@@ -4,7 +4,9 @@
     <div v-for="post in posts " :key="post.id">
       <!-- show post.title if exists in concatenatedTitles else execute new logic -->
       <template v-if="concatenatedTitles.includes(post.title.rendered)">
-        {{ post.title.rendered }}
+        <nuxt-link :to="`/${post.slug}`" @click="$emit('close-modal')">
+          {{ post.title.rendered }}
+        </nuxt-link>
       </template>
       <template v-else>
         <!-- categorized posts -->
@@ -14,7 +16,9 @@
 
             <ul>
               <li v-for="relatedPost in category.posts.slice().reverse()" :key="relatedPost.id">
-                {{ relatedPost.title.rendered }}
+                <nuxt-link :to="`/${relatedPost.slug}`" @click="$emit('close-modal')">
+                  {{ relatedPost.title.rendered }}
+                </nuxt-link>
               </li>
             </ul>
           </template>
