@@ -33,11 +33,11 @@ const {data: posts} = await useWpApi().getPosts();
 const {data: categories} = await useWpApi().getCatgories();
 
 const nonCategorizedPosts = computed(() => {
-  return posts.value.filter(post => !post.categories.length);
+  return posts.value?.filter(post => !post.categories.length);
 });
 
 categories.value.forEach(category => {
-  category.posts = posts.value.filter(post =>
+  category.posts = posts.value?.filter(post =>
       post.categories.includes(category.id)
   );
 });
@@ -47,14 +47,14 @@ const concatenatedTitles = ref([]);
 
 
 // Concatenate post titles and store them in the 'concatenatedTitles' variable
-nonCategorizedPosts.value.forEach((post) => {
+nonCategorizedPosts.value?.forEach((post) => {
   concatenatedTitles.value += post.title.rendered;
 });
 
 // Computed property to check if category name is repeated
 const isCategoryRepeated = computed(() => {
   const uniqueCategories = new Set();
-  return (categoryName) => {
+  return (categoryName: string) => {
     if (uniqueCategories.has(categoryName)) {
       return true; // Category name is repeated
     } else {

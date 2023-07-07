@@ -14,4 +14,5 @@ export interface Post {
   content: {
     rendered: string;
   };
+  categories: number[]; // Add the categories property
 }
