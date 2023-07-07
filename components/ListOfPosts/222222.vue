@@ -1,34 +1,3 @@
-<template>
-  <div>
-
-    <div v-for="post in posts " :key="post.id">
-      <!-- show post.title if exists in concatenatedTitles else execute new logic -->
-      <template v-if="concatenatedTitles.includes(post.title.rendered)">
-        <nuxt-link :to="`/${post.slug}`" @click="$emit('close-modal')" :key="post.slug">
-          {{ post.title.rendered }}
-        </nuxt-link>
-      </template>
-      <template v-else>
-        <!-- categorized posts -->
-        <div v-for="category in categories" :key="category.id">
-          <template v-if="post.categories.includes(category.id) && !isCategoryRepeated(category.name)">
-            <h3 class="bg-red-200">{{ category.name }}</h3>
-
-            <ul>
-              <li v-for="relatedPost in category.posts.slice().reverse()" :key="relatedPost.id">
-                <nuxt-link :to="`/${relatedPost.slug}`" @click="$emit('close-modal')" :key="relatedPost.slug">
-                  {{ relatedPost.title.rendered }}
-                </nuxt-link>
-              </li>
-            </ul>
-          </template>
-        </div>
-      </template>
-    </div>
-
-  </div>
-</template>
-
 <script setup lang="ts">
 import {ref, computed, watch} from 'vue';
 import useWpApi from '~/composables/useWpApi';
