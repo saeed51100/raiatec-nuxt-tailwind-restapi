@@ -1,3 +1,10 @@
+The problem with your code is that you are using the `concatenatedTitles` variable in the `v-if` directive, but this variable is not yet initialized when the first render happens. This is because the `nonCategorizedPosts` variable is also not initialized yet, since it depends on the `posts` variable, which is also fetched asynchronously.
+
+To fix this, you can move the `concatenatedTitles` variable declaration outside of the `computed` block. This will ensure that the variable is initialized before the first render happens.
+
+Here is the updated code:
+
+
 <template>
   <div>
 
@@ -47,20 +54,26 @@ categories.value.forEach(category => {
 });
 
 // Initialize a variable to store concatenated titles
-const concatenatedTitles = ref([]);
+const concatenatedTitles = [];
 
+// Concatenate post titles and store them in the 'concatenatedTitles' variable
+nonCategorizedPosts.value?.forEach((post) => {
+  concatenatedTitles.push(post.title.rendered);
+});
 
-
-
-
-// Watch the 'posts' variable and update the 'concatenatedTitles' variable accordingly
-watch(
-    () => posts.value,
-    (newPosts) => {
-      concatenatedTitles.value = [];
-      newPosts?.forEach((post) => {
-        concatenatedTitles.value += post.title.rendered;
-      });
+// Computed property to check if category name is repeated
+const isCategoryRepeated = computed(() => {
+  const uniqueCategories = new Set();
+  return (categoryName: string) => {
+    if (uniqueCategories.has(categoryName)) {
+      return true; // Category name is repeated
+    } else {
+      uniqueCategories.add(categoryName);
+      return false; // Category name is not repeated
     }
-);
+  };
+});
 </script>
+
+
+This should fix the problem with the sidebar not being rendered correctly.
