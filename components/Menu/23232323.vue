@@ -119,6 +119,6 @@ const sidebarOpen = ref(false)
 </script>
 
 
-      But the problem is that when clicking on the home button, the list of sidebar posts is not rendered correctly and I have to refresh the browser so that the sidebar is displayed correctly.
-      In other words, after clicking Home in the navigation bar, the sidebar is not fully displayed, only the v-if part, and not the v-else part, and I have to refresh the browser with ctrl-f5 to display the sidebar correctly. to be given.
+      But the problem is that when clicking on the home button, the ListOfPosts is not rendered correctly and I have to refresh the browser so that the ListOfPosts is displayed correctly.
+      In other words, after clicking Home in the navigation bar, the ListOfPosts is not fully displayed, and I have to refresh the browser with ctrl-f5 to display the ListOfPosts correctly. to be given.
       Where is the problem with my code?
