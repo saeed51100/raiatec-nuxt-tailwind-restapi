@@ -67,6 +67,7 @@ watch(
         concatenatedTitles.value.push(post.title.rendered);
       });
     }
+
 );
 
 
