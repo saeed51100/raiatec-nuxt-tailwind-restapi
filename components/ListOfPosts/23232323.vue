@@ -15,7 +15,6 @@ shown the list of posts and categories in the sidebar:
         <div v-for="category in categories" :key="category.id">
           <template v-if="post.categories.includes(category.id) && !isCategoryRepeated(category.name)">
             <h3 class="bg-red-200">{{ category.name }}</h3>
-
             <ul>
               <li v-for="relatedPost in category.posts.slice().reverse()" :key="relatedPost.id">
                 <nuxt-link :to="`/${relatedPost.slug}`" @click="$emit('close-modal')" :key="relatedPost.slug">
@@ -53,7 +52,7 @@ const concatenatedTitles = ref([]);
 
 
 // Add post titles into the 'concatenatedTitles' array
-nonCategorizedPosts.value?.forEach((post) => {
+nonCategorizedPosts.value?.forEach(post => {
   concatenatedTitles.value.push(post.title.rendered);
 });
 
@@ -64,12 +63,10 @@ watch(
     () => {
       // Update the concatenated titles array
       concatenatedTitles.value = [];
-      nonCategorizedPosts.value?.forEach((post) => {
+      nonCategorizedPosts.value?.forEach(post => {
         concatenatedTitles.value.push(post.title.rendered);
       });
-    }
-);
-
+    });
 
 // Computed property to check if category name is repeated
 const isCategoryRepeated = computed(() => {
