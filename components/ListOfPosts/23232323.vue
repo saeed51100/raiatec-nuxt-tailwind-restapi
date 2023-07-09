@@ -89,13 +89,10 @@ const isCategoryRepeated = computed(() => {
 
 
 But the problem is that when clicking on the home button, the list of posts
-is not rendered correctly and I have to refresh the browser so that the sidebar
+is not update correctly and I have to refresh the browser so that the sidebar
 is displayed correctly.
 In other words, after clicking Home in the navigation bar, the list of posts is
 not fully displayed, only the v-if part, and not the v-else part, and I have to
 refresh the browser with ctrl-f5 to update the sidebar correctly. to be given.
 
-
-To solve the problem, rewrite the code of the watch part so that in
-addition to the posts.value, it also watches the value of the home or
-other pages and updates the code.
+please solve the problem.
