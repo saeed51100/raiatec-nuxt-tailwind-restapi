@@ -43,16 +43,13 @@ categories.value.forEach(category => {
   );
 });
 
-
 // Initialize an array to store concatenated titles
 const concatenatedTitles = ref([]);
-
 
 // Add post titles into the 'concatenatedTitles' array
 nonCategorizedPosts.value?.forEach(post => {
   concatenatedTitles.value.push(post.title.rendered);
 });
-
 
 // Watch for changes to the post title
 watch(
@@ -63,7 +60,8 @@ watch(
       nonCategorizedPosts.value?.forEach(post => {
         concatenatedTitles.value.push(post.title.rendered);
       });
-    });
+  }
+);
 
 // Computed property to check if category name is repeated
 const isCategoryRepeated = computed(() => {
