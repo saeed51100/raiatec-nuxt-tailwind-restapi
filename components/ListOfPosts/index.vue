@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <div v-for="post in posts " :key="post.id">
+    <div v-for="post in posts" :key="post.id">
       <!-- show post.title if exists in concatenatedTitles else execute new logic -->
       <template v-if="concatenatedTitles.includes(post.title.rendered)">
         <nuxt-link :to="`/${post.slug}`" @click="$emit('close-modal')" :key="post.slug">
@@ -25,7 +24,6 @@
         </div>
       </template>
     </div>
-
   </div>
 </template>
 
@@ -67,7 +65,6 @@ watch(
         concatenatedTitles.value.push(post.title.rendered);
       });
     }
-
 );
 
 

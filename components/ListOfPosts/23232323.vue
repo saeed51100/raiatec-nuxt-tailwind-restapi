@@ -3,8 +3,7 @@ shown the list of posts and categories in the sidebar:
 
 <template>
   <div>
-
-    <div v-for="post in posts " :key="post.id">
+    <div v-for="post in posts" :key="post.id">
       <!-- show post.title if exists in concatenatedTitles else execute new logic -->
       <template v-if="concatenatedTitles.includes(post.title.rendered)">
         <nuxt-link :to="`/${post.slug}`" @click="$emit('close-modal')" :key="post.slug">
@@ -28,7 +27,6 @@ shown the list of posts and categories in the sidebar:
         </div>
       </template>
     </div>
-
   </div>
 </template>
 
