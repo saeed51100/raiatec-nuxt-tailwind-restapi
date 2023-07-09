@@ -103,5 +103,5 @@ not fully displayed, only the v-if part, and not the v-else part, and I have to
 refresh the browser with ctrl-f5 to update the sidebar correctly. to be given.
 
 To solve the problem, rewrite the code of the watch part so that in
-addition to the posts.value, it also watches the value of the home or other
-page and updates the code.
+addition to the posts.value, it also watches the value of the home or
+other pages and updates the code.
