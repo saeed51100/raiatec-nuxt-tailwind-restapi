@@ -89,5 +89,5 @@ In other words, after clicking Home in the navigation bar, the list of posts is
 not fully displayed, only the v-if part, and not the v-else part, and I have to
 refresh the browser with ctrl-f5 to update the sidebar correctly. to be given.
 
-Please add a new watch so that listofpost will be updated with every new request of
-any kind, be it a new post or a new page.
+In WordPress, from wp_reset_postdata(); It is used to reset the data. Is there a similar
+command in nuxt 3 or vue to solve the problem? Does this method work for my code?
