@@ -89,5 +89,5 @@ In other words, after clicking Home in the navigation bar, the list of posts is
 not fully displayed, only the v-if part, and not the v-else part, and I have to
 refresh the browser with ctrl-f5 to update the sidebar correctly. to be given.
 
-Please modify my code using onBeforeRouteUpdate to reset the necessary data
+Please modify my code to reset and update the necessary data
 when navigating to the home page or other page.
