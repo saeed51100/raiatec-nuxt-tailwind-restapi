@@ -33,12 +33,12 @@ import useWpApi from '~/composables/useWpApi';
 const {data: posts} = await useWpApi().getPosts();
 const {data: categories} = await useWpApi().getCatgories();
 
+// Initialize an array to store concatenated titles
+const concatenatedTitles = ref([]);
+
 const nonCategorizedPosts = computed(() => {
   return posts.value?.filter(post => !post.categories.length);
 });
-
-// Initialize an array to store concatenated titles
-const concatenatedTitles = ref([]);
 
 // Add post titles into the 'concatenatedTitles' array
 nonCategorizedPosts.value?.forEach(post => {
