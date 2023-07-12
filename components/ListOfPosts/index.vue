@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, computed, watch} from 'vue';
+import {ref, computed} from 'vue';
 import useWpApi from '~/composables/useWpApi';
 
 const {data: posts} = await useWpApi().getPosts();
