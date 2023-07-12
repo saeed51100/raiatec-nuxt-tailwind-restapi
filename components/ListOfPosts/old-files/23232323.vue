@@ -36,12 +36,12 @@ import useWpApi from '~/composables/useWpApi';
 const {data: posts} = await useWpApi().getPosts();
 const {data: categories} = await useWpApi().getCatgories();
 
+// Initialize an array to store concatenated titles
+const concatenatedTitles = ref([]);
+
 const nonCategorizedPosts = computed(() => {
   return posts.value?.filter(post => !post.categories.length);
 });
-
-// Initialize an array to store concatenated titles
-const concatenatedTitles = ref([]);
 
 // Add post titles into the 'concatenatedTitles' array
 nonCategorizedPosts.value?.forEach(post => {
@@ -75,7 +75,7 @@ is not update correctly and I have to refresh the browser so that the sidebar
 is displayed correctly.
 In other words, after clicking Home in the navigation bar, the list of posts is
 not fully displayed, only the v-if part, and not the v-else part, and I have to
-refresh the browser with ctrl-f5 to update the sidebar correctly. to be given.
+manually refresh the browser to update the sidebar correctly. to be given.
 
 Please modify my code to reset and update the necessary data
 when navigating to the home page or other page.
