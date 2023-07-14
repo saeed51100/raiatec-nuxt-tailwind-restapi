@@ -1,5 +1,8 @@
 <template>
   <div>
+    <!--    {{ concatenatedTitles }}-->
+    <pre class="bg-green-200">{{ JSON.stringify(concatenatedTitles, null, 2) }}</pre>
+
     <div v-for="post in posts" :key="post.id">
       <!-- show post.title if exists in concatenatedTitles else execute new logic -->
       <template v-if="concatenatedTitles.includes(post.title.rendered)">
