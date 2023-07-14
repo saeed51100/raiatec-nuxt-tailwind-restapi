@@ -13,7 +13,7 @@
       <template v-else>
         <!-- categorized posts -->
         <div v-for="category in categories" :key="category.id">
-          <template v-if="!isCategoryRepeated(category.name)">
+          <template v-if="post.categories.includes(category.id) && !isCategoryRepeated(category.name)">
             <h3 class="bg-red-200">{{ category.name }}</h3>
             <ul>
               <li v-for="relatedPost in category.posts.slice().reverse()" :key="relatedPost.id">
