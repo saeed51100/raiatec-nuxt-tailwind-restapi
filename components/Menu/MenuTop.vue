@@ -49,11 +49,12 @@
       class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
 
     <!-- Raiatec logo -->
-    <NuxtLink to="/">
-      <div class="flex h-16 shrink-0 items-center">
+
+    <div class="flex h-16 shrink-0 items-center">
+      <NuxtLink to="/">
         <img class="h-8 w-auto" src="~assets/svg/raiatec.svg" alt="Raiatec Logo"/>
-      </div>
-    </NuxtLink>
+      </NuxtLink>
+    </div>
 
 
     <!--Modal button-->
